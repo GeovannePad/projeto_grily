@@ -54,7 +54,8 @@
         $registrar->addUsuario();
         echo "Registro realizado com sucesso";
       }
-
+      
+      header("Location:");
       break;
     case 'registrar_estudante':
       $id = $_GET["idinscricao"];
@@ -101,13 +102,14 @@
       $registrar_estudante->setAllInscricaoData($fone, $dtnascimento, $endereco, $nome, $biografia, $idcurso);
       $registrar_estudante->setAllEstudanteData($rm, $idusuario);
       $registrar_estudante->addEstudante();     
-      
+      header("Location: painel_estudantes.php");
       
       break;
     case 'apagar_inscricao':
       $id = $_GET["idinscricao"];
       $inscricao = new Inscricao();
       $inscricao->deleteInscricaoById($id);
+      header("Location: painel_organizador.php");
       break;
     case 'apagar_estudante':
       $idusuario = $_GET["idusuario"];
@@ -115,11 +117,13 @@
       $estudante = new Usuario();
       $estudante->deleteEstudanteById($idestudante);
       $estudante->deleteUsuarioById($idusuario);
+      header("Location: painel_estudantes.php");
       break;
     case 'apagar_usuario':
       $idusuario = $_GET["idusuario"];
       $usuario = new Usuario();
       $usuario->deleteUsuarioById($idusuario);
+      header("Location: painel_administrador.php");
       break;
     default:
       # code...

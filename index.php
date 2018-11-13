@@ -46,7 +46,7 @@
                         <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="form.php">Cadastre-se</a>
+                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
                     </li>
                 </ul>
             </div>

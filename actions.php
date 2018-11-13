@@ -25,6 +25,9 @@
         header("Location: painel_organizador.php");
       } else if ($usuario[0]["tipo"] == "Administrador"){
         header("Location: painel_administrador.php");
+      } else {
+        echo "Seja bem vindo estudante, " . $usuario[0]["nome"] . "<br>";
+        echo "Nosso menu do aluno ainda está em desenvolvimento!";
       }
       break;
     case 'registrar_usuario':
@@ -102,6 +105,7 @@
       $registrar_estudante->setAllInscricaoData($fone, $dtnascimento, $endereco, $nome, $biografia, $idcurso);
       $registrar_estudante->setAllEstudanteData($rm, $idusuario);
       $registrar_estudante->addEstudante();     
+      $registrar_estudante->deleteInscricaoById($inscricao[0]["idinscricao"]);
       header("Location: painel_estudantes.php");
       
       break;

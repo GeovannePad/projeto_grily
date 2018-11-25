@@ -85,4 +85,12 @@ class Usuario extends Estudante
     ));
   }
 
+  public function selectUsuarioEstudante($login, $senha){
+    $this->setLogin($login);
+    $this->setSenha($senha);
+    return $this->stmt->select("SELECT rm, login, estudantes.nome, dtnascimento, endereco, idcurso, fone, biografia, idestudante, imagem FROM estudantes INNER JOIN usuarios ON estudantes.idusuario=usuarios.idusuario WHERE usuarios.login = :LOGIN AND usuarios.senha = :SENHA", array(
+      ":LOGIN"=>$this->getLogin(),
+      ":SENHA"=>$this->getSenha()
+    ));
+  }
 }

@@ -1,5 +1,6 @@
 <?php
 
+  session_start();
   require_once("functions.php");
   
   ini_set( 'display_errors', 1 );

@@ -1,4 +1,4 @@
-<?php
+-<?php
   require_once("config.php");
 
   
@@ -26,8 +26,28 @@
       } else if ($usuario[0]["tipo"] == "Administrador"){
         header("Location: painel_administrador.php");
       } else {
-        echo "Seja bem vindo estudante, " . $usuario[0]["nome"] . "<br>";
-        echo "Nosso menu do aluno ainda está em desenvolvimento!";
+        foreach ($usuario[0] as $key => $value) {
+          if ($key == "dtnascimento") {
+            $date = new DateTime($value);
+            $data = $date->format(d/m/Y);
+            $_SESSION["estudante"][$key] = $data;
+            continue;
+          }
+          if ($key == "idcurso") { 
+            if ($value == 1) {
+              echo "Teatro";
+            } else if ($value == 2){
+              echo "Dança";
+            } else if ($value == 3){
+              echo "Música";
+            } else {
+              echo "Artes";
+            }
+            continue;
+          }
+          $_SESSION["estudante"][$key] = $value;
+        }
+        header("Location: perfil_estudante.php");
       }
       break;
     case 'registrar_usuario':
@@ -107,7 +127,6 @@
       $registrar_estudante->addEstudante();     
       $registrar_estudante->deleteInscricaoById($inscricao[0]["idinscricao"]);
       header("Location: painel_estudantes.php");
-      
       break;
     case 'apagar_inscricao':
       $id = $_GET["idinscricao"];
@@ -128,6 +147,89 @@
       $usuario = new Usuario();
       $usuario->deleteUsuarioById($idusuario);
       header("Location: painel_administrador.php");
+      break;
+    case 'alterar_imagem':
+      $imagem_nova = $_FILES["imagem"];
+      $imagem_antiga = $_SESSION["estudante"]["imagem"];
+      if ($imagem_antiga == "user-icon.png") {
+        $imagem_nome = $imagem_nova["name"];
+        $imagem_tamanho = $imagem_nova["size"];
+        $imagem_tipo = $imagem_nova["type"];
+        if (!empty($imagem_nome)) {
+          if ($imagem_tamanho < 20000000) {
+            if ($imagem_tipo == "image/jpeg" || $imagem_tipo == "image/jpg" || $imagem_tipo == "image/png") {
+              mb_internal_encoding("UTF-8");
+              $nome = $_SESSION["estudante"]["nome"];
+              $pos_primeiro = strpos($nome, " ");
+              $primeiro_nome = mb_substr($nome, 0, $pos_primeiro);
+              $idestudante = $_SESSION["estudante"]["idestudante"];
+              $estudante = new Estudante();
+              $_SESSION["estudante"]["imagem"] = $estudante->updateImagem($imagem_nova, strtolower($primeiro_nome), $idestudante);
+              header("Location: perfil_estudante.php?mensagem=upload_imagem");
+            } else {
+              header("Location: perfil_estudante.php?err_imagem=tipo_errado");
+            }
+          } else {
+            header("Location: perfil_estudante.php?err_imagem=grande");
+          }
+        } else {
+          header("Location: perfil_estudante.php?err_imagem=vazio");
+        }
+      } else {
+        $imagem_nome = $imagem_nova["name"];
+        $imagem_tamanho = $imagem_nova["size"];
+        $imagem_tipo = $imagem_nova["type"];
+        if (!empty($imagem_nome)) {
+          if ($imagem_tamanho < 20000000) {
+            if ($imagem_tipo == "image/jpeg" || $imagem_tipo == "image/jpg" || $imagem_tipo == "image/png") {
+              mb_internal_encoding("UTF-8");
+              $nome = $_SESSION["estudante"]["nome"];
+              $pos_primeiro = strpos($nome, " ");
+              $primeiro_nome = mb_substr($nome, 0, $pos_primeiro);
+              $idestudante = $_SESSION["estudante"]["idestudante"];
+              unlink("midia/imagens_estudantes/" . $imagem_antiga);
+
+              $estudante = new Estudante();
+              $_SESSION["estudante"]["imagem"] = $estudante->updateImagem($imagem_nova, strtolower($primeiro_nome), $idestudante);
+              header("Location: perfil_estudante.php?mensagem=upload_imagem");
+            } else {
+              header("Location: perfil_estudante.php?err_imagem=tipo_errado");
+            }
+          } else {
+            header("Location: perfil_estudante.php?err_imagem=grande");
+          }
+        } else {
+          header("Location: perfil_estudante.php?err_imagem=vazio");
+        }
+      }
+      break;
+    case 'alterar_dados':
+      
+    
+      $nome = $_POST["nome"];
+      $dtnascimento = $_POST["dtnascimento"];
+      $endereco = $_POST["endereco"];
+      $fone = $_POST["fone"];
+      $biografia = $_POST["biografia"];
+      $idestudante = $_SESSION["estudante"]["idestudante"];
+
+      if (empty($nome) || empty($dtnascimento) || empty($endereco) || empty($fone) || empty($biografia)) {
+        header("Location: perfil_estudante.php?err_dados=vazio");
+      }
+      $estudante = new Estudante();
+      $estudante->setNome($nome);
+      $estudante->setDtnascimento($dtnascimento);
+      $estudante->setEndereco($endereco);
+      $estudante->setFone($fone);
+      $estudante->setBiografia($biografia);
+      $verificar = $estudante->alterarDados($nome, $dtnascimento, $endereco, $fone, $biografia, $idestudante);
+
+      if ($verificar) {
+        header("Location: perfil_estudante.php?mensagem=upload_dados");
+      } else {
+        header("Location: perfil_estudante.php?err_dados=erro_alterar");
+      }
+
       break;
     default:
       # code...

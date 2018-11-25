@@ -7,10 +7,11 @@ function gerarLoginEstudante($string){
     $string = strtolower($string);
     $pos_primeiro = strpos($string, " ");
     $pos_segundo = strrpos($string, " ") + 1;
+    $strlen = strlen($string);
     $num = mt_rand(1111, 9999);
     
     $primeiro_nome = mb_substr($string, 0, $pos_primeiro);
-    $ultimo_nome = mb_substr($string, $pos_segundo, $pos_segundo);
+    $ultimo_nome = mb_substr($string, $pos_segundo, $strlen);
     return $primeiro_nome . "." . $ultimo_nome . $num . "@grily.art";
 }
 function checkRm($rm, $rms){

@@ -20,7 +20,8 @@
     }
   </style>
 </head>
-<?php require_once("config.php"); 
+<?php 
+require_once("config.php"); 
 if (!isset($_SESSION["estudante"])) {
   header("Location: plogin.php?err=logar");
 }
@@ -118,7 +119,6 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         </div>
         <div class="row">
           <div class="two wide column"></div>
-           
           <div class="twelve wide column">
             <a class="ui right floated negative button data-button" href="#" role="button">Sair</a>
             <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
@@ -200,7 +200,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
   <script>
     
     $(document).ready(function(){
-      $(".form-button").hide()
+      $(".form-button").hide();
       <?php
       if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         echo "'var imagem_usuario = midia/usericon.png';";
@@ -275,7 +275,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
           echo 'var erro = "tipo_errado";';
         break;
     default:
-        echo 'var erro;';
+        echo 'var erro = "nada";';
       break;
   }
 }

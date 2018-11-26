@@ -20,7 +20,7 @@
       $login = $_POST["login"];
       $senha = $_POST["senha"];
       $logar = new Usuario();
-      $usuario = $logar->selectOneUsuario($login, $senha);
+      $usuario = $logar->selectUsuarioEstudante($login, $senha);
       if ($usuario[0]["tipo"] == "Organizador") {
         header("Location: painel_organizador.php");
       } else if ($usuario[0]["tipo"] == "Administrador"){
@@ -29,24 +29,24 @@
         foreach ($usuario[0] as $key => $value) {
           if ($key == "dtnascimento") {
             $date = new DateTime($value);
-            $data = $date->format(d/m/Y);
+            $data = $date->format("d/m/Y");
             $_SESSION["estudante"][$key] = $data;
             continue;
           }
           if ($key == "idcurso") { 
             if ($value == 1) {
-              echo "Teatro";
+              $_SESSION["estudante"][$key] = "Teatro";
             } else if ($value == 2){
-              echo "Dança";
+              $_SESSION["estudante"][$key] = "Dança";
             } else if ($value == 3){
-              echo "Música";
+              $_SESSION["estudante"][$key] = "Música";
             } else {
-              echo "Artes";
+              $_SESSION["estudante"][$key] = "Artes";
             }
             continue;
           }
           $_SESSION["estudante"][$key] = $value;
-        }
+        } 
         header("Location: perfil_estudante.php");
       }
       break;
@@ -205,7 +205,6 @@
       break;
     case 'alterar_dados':
       
-    
       $nome = $_POST["nome"];
       $dtnascimento = $_POST["dtnascimento"];
       $endereco = $_POST["endereco"];
@@ -223,13 +222,33 @@
       $estudante->setFone($fone);
       $estudante->setBiografia($biografia);
       $verificar = $estudante->alterarDados($nome, $dtnascimento, $endereco, $fone, $biografia, $idestudante);
-
+      $novosDados = $estudante->selectEstudanteById($idestudante);
+      foreach ($novosDados[0] as $key => $value) {
+        if ($key == "dtnascimento") {
+          $date = new DateTime($value);
+          $data = $date->format("d/m/Y");
+          $_SESSION["estudante"][$key] = $data;
+          continue;
+        }
+        if ($key == "idcurso") { 
+          if ($value == 1) {
+            $_SESSION["estudante"][$key] = "Teatro";
+          } else if ($value == 2){
+            $_SESSION["estudante"][$key] = "Dança";
+          } else if ($value == 3){
+            $_SESSION["estudante"][$key] = "Música";
+          } else {
+            $_SESSION["estudante"][$key] = "Artes";
+          }
+          continue;
+        }
+        $_SESSION["estudante"][$key] = $value;
+      }
       if ($verificar) {
         header("Location: perfil_estudante.php?mensagem=upload_dados");
       } else {
         header("Location: perfil_estudante.php?err_dados=erro_alterar");
       }
-
       break;
     default:
       # code...

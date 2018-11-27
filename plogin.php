@@ -32,8 +32,7 @@
       }
     </style>
     <script>
-    $(document)
-      .ready(function() {
+    $(document).ready(function() {
         $('.ui.form')
           .form({
             fields: {
@@ -43,10 +42,6 @@
                   {
                     type   : 'empty',
                     prompt : 'Please enter your e-mail'
-                  },
-                  {
-                    type   : 'email',
-                    prompt : 'Please enter a valid e-mail'
                   }
                 ]
               },

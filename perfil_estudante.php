@@ -120,6 +120,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         <div class="row">
           <div class="two wide column"></div>
           <div class="twelve wide column">
+            <a class="ui left floated primary button data-button" id="senhabutton" role="button">Alterar Senha</a>
             <a class="ui right floated negative button data-button" href="actions.php?action=deslogar" role="button">Sair</a>
             <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
             <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>
@@ -131,6 +132,25 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       </div>
     </div>
   </div>
+    <div class="ui tiny modal senha">
+      <div class="content right floated">
+        <form action="actions.php?action=alterar_senha" id="form-senha" class="ui form senha=form" method="POST">
+        <div class="inline field">
+          <div class="ui right pointing label">
+            Sua senha deve 8 caracteres ou mais!
+          </div>
+          <input type="password" name="senha" id="inputSenha" placeholder="Nova Senha">
+        </div>
+        </form>
+      </div>
+      <div class="actions">
+        <div class="ui buttons">
+          <button type="reset" class="ui negative button" form="form-senha">Cancelar</button>
+          <div class="or"></div>
+          <button type="submit" class="ui positive button" form="form-senha">Alterar</button>
+        </div>
+      </div>
+    </div>
   <div class="ui coupled modal image">
     <div class="header">Upload de imagem</div>
     <i class="close icon"></i>
@@ -224,7 +244,10 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $('.modal.image')
       .modal("show");
     });
-
+    $("#senhabutton").click(function(){
+      $('.modal.tiny.senha')
+      .modal("show");
+    });
     $("input:file").change(function(){
       if (typeof (FileReader) != "undefined") {
         var imagem = $("#imagemModal");
@@ -257,12 +280,18 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $(".dataSpan").show();
       $(".data-button").show();
     });
+    
 
 
   });
     
 
   <?php
+    if (isset($_GET["err_senha"]) && $_GET["err_senha"] == "vazio") {
+      echo 'var erro_senha="vazio"';
+    } else if (isset($_GET["err_senha"]) && $_GET["err_senha"] == "pequena"){
+      echo 'var erro_senha="pequena"';
+    }
     if (isset($_GET["err_imagem"])) {
       switch ($_GET["err_imagem"]) {
         case 'vazio':
@@ -280,6 +309,14 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
   }
 }
 ?>
+  if (erro_senha == 'vazio') {
+    $('.coupled.vazio.senha')
+    .modal("show");
+  }
+  if (erro_senha == 'pequena') {
+    $('.coupled.pequena')
+    .modal("show");
+  }
   if(erro == 'vazio'){
     $('.coupled.vazio')
       .modal("show");

@@ -250,6 +250,11 @@
         header("Location: perfil_estudante.php?err_dados=erro_alterar");
       }
       break;
+    case 'deslogar':
+      unset($_SESSION["estudante"]);
+      session_destroy();
+      header("Location: plogin.php");
+      break;
     default:
       # code...
       break;

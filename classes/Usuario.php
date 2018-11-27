@@ -88,9 +88,20 @@ class Usuario extends Estudante
   public function selectUsuarioEstudante($login, $senha){
     $this->setLogin($login);
     $this->setSenha($senha);
-    return $this->stmt->select("SELECT tipo, rm, login, estudantes.nome, dtnascimento, endereco, idcurso, fone, biografia, idestudante, imagem FROM estudantes INNER JOIN usuarios ON estudantes.idusuario=usuarios.idusuario WHERE usuarios.login = :LOGIN AND usuarios.senha = :SENHA", array(
+    return $this->stmt->select("SELECT tipo, rm, login, estudantes.nome, dtnascimento, endereco, idcurso, fone, biografia, idestudante, imagem, usuarios.idusuario FROM estudantes INNER JOIN usuarios ON estudantes.idusuario=usuarios.idusuario WHERE usuarios.login = :LOGIN AND usuarios.senha = :SENHA", array(
       ":LOGIN"=>$this->getLogin(),
       ":SENHA"=>$this->getSenha()
     ));
+  }
+
+  public function alterarSenhaUsuario($idusuario, $novasenha){
+    $this->setSenha($novasenha);
+    $this->setIdusuario($idusuario);
+
+    return $this->stmt->update("UPDATE usuarios SET senha = :SENHA WHERE idusuario = :IDUSUARIO;", array(
+      ":SENHA"=>$this->getSenha(),
+      ":IDUSUARIO"=>$this->getIdusuario()
+    ));
+
   }
 }

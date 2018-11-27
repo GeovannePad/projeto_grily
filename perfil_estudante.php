@@ -141,13 +141,19 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
           </div>
           <input type="password" name="senha" id="inputSenha" placeholder="Nova Senha">
         </div>
+        <div class="inline field">
+          <div class="ui right pointing label">
+            Escreva sua nova senha novamente!
+          </div>
+          <input type="password" name="senha2" id="inputSenha2" placeholder="Nova Senha">
+        </div>
         </form>
       </div>
       <div class="actions">
         <div class="ui buttons">
           <button type="reset" class="ui negative button" form="form-senha">Cancelar</button>
           <div class="or"></div>
-          <button type="submit" class="ui positive button" form="form-senha">Alterar</button>
+          <button type="submit" class="ui positive button" form="form-senha" id="botaoAlterarSenha">Alterar</button>
         </div>
       </div>
     </div>
@@ -160,7 +166,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         <div id="imagemModal"></div>
       </div>
       <div class="description">
-        <form action="actions.php?action=alterar_imagem" id="imageForm" method="post" class="ui form" enctype="multipart/form-data">
+        <form action="actions.php?action=alterar_imagem" id="imageForm" method="post" class="ui form form-senha" enctype="multipart/form-data">
           <div class="field">
             <label>Foto</label>
             <input type="file" name="imagem" id="imageInput">
@@ -280,7 +286,28 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $(".dataSpan").show();
       $(".data-button").show();
     });
-    
+    $("#botaoAlterarSenha").click(function(){
+      $(".ui.form.form-senha")
+      .form({
+        on: 'blur',
+        fields: {
+          senha: {
+            identifier: 'senha',
+            rules: [
+              {
+                type: 'empty',
+                prompt: 'Por favor, insira uma senha'
+              }
+              {
+                type: 'minLenght[8]',
+                prompt: 'A senha deve ter 8 ou mais caracteres'
+              }
+            ]
+          },
+
+        }
+      });
+    });
 
 
   });

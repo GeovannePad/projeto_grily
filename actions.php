@@ -27,6 +27,10 @@
         header("Location: painel_administrador.php");
       } else {
         foreach ($usuario[0] as $key => $value) {
+          if ($key == "idusuario") {
+            $_SESSION["estudante"]["idusuario"] = $value;
+            continue;
+          }
           if ($key == "dtnascimento") {
             $date = new DateTime($value);
             $data = $date->format("d/m/Y");
@@ -245,15 +249,26 @@
         $_SESSION["estudante"][$key] = $value;
       }
       if ($verificar) {
-        header("Location: perfil_estudante.php?mensagem=upload_dados");
+        header("Location: perfil_estudante.php?mensagem=dados_trocados");
       } else {
-        header("Location: perfil_estudante.php?err_dados=erro_alterar");
+        header("Location: perfil_estudante.php?err=erro_alterar_dados");
       }
       break;
     case 'deslogar':
       unset($_SESSION["estudante"]);
       session_destroy();
       header("Location: plogin.php");
+      break;
+    case 'alterar_senha':
+      $novasenha = $_POST["senha"];
+      $idusuario = $_SESSION["estudante"]["idusuario"];
+      $usuario = new Usuario();
+      $verificar = $usuario->alterarSenhaUsuario($idusuario, $novasenha);
+      if ($verificar) {
+        header("Location: perfil_estudante.php?mensagem=senha_trocada");
+      } else {
+        header("Location: perfil_estudante.php?err=erro_alterar_senha");
+      }
       break;
     default:
       # code...

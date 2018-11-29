@@ -120,7 +120,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         <div class="row">
           <div class="two wide column"></div>
           <div class="twelve wide column">
-            <a class="ui left floated primary button data-button" href="#" role="button">Alterar Senha</a>
+            <a class="ui left floated primary button data-button" href="palterar_senha.php" role="button">Alterar Senha</a>
             <a class="ui right floated negative button data-button" href="actions.php?action=deslogar" role="button">Sair</a>
             <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
             <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>

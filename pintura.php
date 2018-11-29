@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css-js/css-aditional.css">
     <link rel="stylesheet" href="css-js/Semantic-UI-CSS-master/semantic.min.css">
     <script src="main.js"></script>
+    
+    <!-- Estilo dos erros de validação -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 </head>
 
 <body class="bg">

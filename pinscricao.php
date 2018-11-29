@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Inscrição</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css-js/css-aditional.css">
     <link rel="stylesheet" href="css-js/Semantic-UI-CSS-master/semantic.min.css">
+
     <script src="main.js"></script>
 </head>
 
@@ -59,7 +60,7 @@
   
 <br><br>
 <div class="container">
-        <form class="ui form" method="POST" action="actions.php?action=inscrever">
+        <form class="ui form" id="form" method="POST" action="actions.php?action=inscrever">
           <div class="field">
             <label for="inputNome" class="col-sm-1-12 col-form-label">Nome</label>
               <input type="text" class="form-control" name="nome" id="inputNome">
@@ -97,7 +98,7 @@
           </div>
 
           <div class="field">
-              <button type="submit" class="ui inverted brown button">Inscrever</button>
+              <input type="submit" class="ui inverted brown button" value="Inscrever-se">
           </div>
         </form>
       </div>
@@ -135,6 +136,35 @@
         crossorigin="anonymous"></script>
     <script src="css-js/js-aditional.js"></script>
     <script src="css-js/Semantic-UI-CSS-master/semantic.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+    debug: true,
+    success: "valid"
+    });
+    $( "#form" ).validate({
+    rules: {
+        nome: {
+            required: true
+        },
+        dtnascimento: {
+            required: true
+        },
+        fone: {
+            required: true
+        },
+        endereco: {
+            required: true
+        },
+        curso: {
+            required: true
+        }
+    }
+    });
+    </script>
     <script>
         $('.special .image').dimmer({
             on: 'hover'

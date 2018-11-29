@@ -120,43 +120,17 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         <div class="row">
           <div class="two wide column"></div>
           <div class="twelve wide column">
-            <a class="ui left floated primary button data-button" id="senhabutton" role="button">Alterar Senha</a>
+            <a class="ui left floated primary button data-button" href="#" role="button">Alterar Senha</a>
             <a class="ui right floated negative button data-button" href="actions.php?action=deslogar" role="button">Sair</a>
             <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
             <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>
             <a class="ui right floated primary button data-button" role="button" id="botaoEditar">Editar</a>
           </div>
           <div class="two wide column"></div>
-        </div>
-        
+        </div> 
       </div>
     </div>
   </div>
-    <div class="ui tiny modal senha">
-      <div class="content right floated">
-        <form action="actions.php?action=alterar_senha" id="form-senha" class="ui form senha=form" method="POST">
-        <div class="inline field">
-          <div class="ui right pointing label">
-            Sua senha deve 8 caracteres ou mais!
-          </div>
-          <input type="password" name="senha" id="inputSenha" placeholder="Nova Senha">
-        </div>
-        <div class="inline field">
-          <div class="ui right pointing label">
-            Escreva sua nova senha novamente!
-          </div>
-          <input type="password" name="senha2" id="inputSenha2" placeholder="Nova Senha">
-        </div>
-        </form>
-      </div>
-      <div class="actions">
-        <div class="ui buttons">
-          <button type="reset" class="ui negative button" form="form-senha">Cancelar</button>
-          <div class="or"></div>
-          <button type="submit" class="ui positive button" form="form-senha" id="botaoAlterarSenha">Alterar</button>
-        </div>
-      </div>
-    </div>
   <div class="ui coupled modal image">
     <div class="header">Upload de imagem</div>
     <i class="close icon"></i>
@@ -250,10 +224,6 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $('.modal.image')
       .modal("show");
     });
-    $("#senhabutton").click(function(){
-      $('.modal.tiny.senha')
-      .modal("show");
-    });
     $("input:file").change(function(){
       if (typeof (FileReader) != "undefined") {
         var imagem = $("#imagemModal");
@@ -286,29 +256,6 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $(".dataSpan").show();
       $(".data-button").show();
     });
-    $("#botaoAlterarSenha").click(function(){
-      $(".ui.form.form-senha")
-      .form({
-        on: 'blur',
-        fields: {
-          senha: {
-            identifier: 'senha',
-            rules: [
-              {
-                type: 'empty',
-                prompt: 'Por favor, insira uma senha'
-              }
-              {
-                type: 'minLenght[8]',
-                prompt: 'A senha deve ter 8 ou mais caracteres'
-              }
-            ]
-          },
-
-        }
-      });
-    });
-
 
   });
     

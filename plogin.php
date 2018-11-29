@@ -32,7 +32,8 @@
       }
     </style>
     <script>
-    $(document).ready(function() {
+    $(document)
+    .ready(function() {
         $('.ui.form')
           .form({
             fields: {

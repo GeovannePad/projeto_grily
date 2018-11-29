@@ -19,27 +19,16 @@
       <div class="two wide column">
         <div class="ui floating labeled icon dropdown button" id="filtroDropdown">
           <i class="filter icon"></i>
-          <span class="text">Filter</span>
-          <div class="menu">
-            <div class="header">
-              <i class="tags icon"></i>
-              Filter by tag
-            </div>
-            <div class="divider"></div>
-            <div class="item">
-              <i class="attention icon"></i>
-              Important
-            </div>
-            <div class="item">
-              <i class="comment icon"></i>
-              Announcement
-            </div>
-            <div class="item">
-              <i class="conversation icon"></i>
-              Discussion
-            </div>
-          </div>
+          <span class="text">Tipo de usuário</span>
+            <select name="tipo" id="select">
+              <option value="">Tipo de usuário</option>
+              <option value="Administradores">Administradores</option>
+              <option value="Organizadores">Organizadores</option>
+              <option value="Estudantes">Estudantes</option>
+            </select>  
         </div>
+        <button class="ui positive button" id="filterButton">Filtrar</button>
+      </div>
         
       </div> 
       </div>
@@ -56,8 +45,12 @@
   <script src="css-js/Semantic-UI-CSS-master/semantic.min.js"></script>
   <script src="css-js/js-aditional.js"></script>
   <script>
-    $("#filtroDropdown")
-    .dropdown();
+    $(document).ready(function(){
+      $("#filterbutton").click(function(){
+        
+      }); 
+    });
+    
   </script>
 </body>
 </html>

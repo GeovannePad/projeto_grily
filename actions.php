@@ -280,6 +280,12 @@
         }
       }
       break;
+    case 'selecionar_usuario':
+      $tipo = $_GET["tipo"];
+      if (condition) {
+        # code...
+      }
+      break;
     default:
       # code...
       break;

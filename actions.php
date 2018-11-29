@@ -260,15 +260,7 @@
       header("Location: plogin.php");
       break;
     case 'alterar_senha':
-      $novasenha = $_POST["senha"];
-      $idusuario = $_SESSION["estudante"]["idusuario"];
-      $usuario = new Usuario();
-      $verificar = $usuario->alterarSenhaUsuario($idusuario, $novasenha);
-      if ($verificar) {
-        header("Location: perfil_estudante.php?mensagem=senha_trocada");
-      } else {
-        header("Location: perfil_estudante.php?err=erro_alterar_senha");
-      }
+      
       break;
     default:
       # code...

@@ -17,15 +17,28 @@
     </div>
     <div class="ui vertical segment">
       <div class="two wide column">
-        <div class="ui floating labeled icon dropdown button" id="filtroDropdown">
+        <div class="ui floating labeled icon dropdown button">
           <i class="filter icon"></i>
-          <span class="text">Tipo de usuário</span>
-            <select name="tipo" id="select">
-              <option value="">Tipo de usuário</option>
-              <option value="Administradores">Administradores</option>
-              <option value="Organizadores">Organizadores</option>
-              <option value="Estudantes">Estudantes</option>
-            </select>  
+          <span class="text">Filtro</span>
+          <div class="menu">
+            <div class="header">
+              <i class="tags icon"></i>
+              Usuário
+            </div>
+            <div class="divider"></div>
+            <div class="item">
+              <i class="attention icon"></i>
+              Administradores
+            </div>
+            <div class="item">
+              <i class="comment icon"></i>
+              Organizadores
+            </div>
+            <div class="item">
+              <i class="conversation icon"></i>
+              Estudantes
+            </div>
+          </div>
         </div>
         <button class="ui positive button" id="filterButton">Filtrar</button>
       </div>
@@ -46,8 +59,11 @@
   <script src="css-js/js-aditional.js"></script>
   <script>
     $(document).ready(function(){
-      $("#filterbutton").click(function(){
-        
+      $(".ui.icon").dropdown();
+      $("#filterButton").click(function(){
+        var userType = $(".ui.icon").dropdown('get text').trim().toLowerCase();
+        var type = userType.toLowerCase();
+        window.location.href = "http://localhost/actions.php?action=selecionar_usuario&tipo=" + type;
       }); 
     });
     

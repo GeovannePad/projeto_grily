@@ -1,4 +1,4 @@
--<?php
+<?php
   require_once("config.php");
 
   
@@ -51,7 +51,12 @@
           }
           $_SESSION["estudante"][$key] = $value;
         } 
-        header("Location: perfil_estudante.php");
+        $stringlen = strlen($senha);
+        if ($stringlen === 5) {
+          header("Location: palterar_senha.php");
+        } else {
+          header("Location: perfil_estudante.php");
+        }
       }
       break;
     case 'registrar_usuario':
@@ -260,7 +265,20 @@
       header("Location: plogin.php");
       break;
     case 'alterar_senha':
-      
+      $novasenha = $_POST["senha"];
+      $senhaConf = $_POST["senhaConf"];
+      $idusuario = $_SESSION["estudante"]["idusuario"];
+      if ($novasenha != $senhaConf) {
+        header("Location: palterar_senha.php?err=senha_diferente");
+      } else { 
+        $usuario = new Usuario();
+        $verificar = $usuario->alterarSenhaUsuario($idusuario, $novasenha);
+        if ($verificar) {
+          header("Location: perfil_estudante.php?mensagem=senha_trocada");
+        } else {
+          header("Location: perfil_estudante.php?err=trocar_senha");
+        }
+      }
       break;
     default:
       # code...

@@ -13,14 +13,14 @@
     <div class="container">
       <table class="table">
         <thead>
-         <th>RM</th>
-         <th>Nome</th>
-         <th>Data de nascimento</th>
-         <th>Endereço</th>
-         <th>Telefone</th>
-         <th>Curso</th>
-         <th>Biografia</th>
-         <th>Organizador que aprovou</th>
+          <th>RM</th>
+          <th>Nome</th>
+          <th>Data de nascimento</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>Curso</th>
+          <th>Biografia</th>
+          <th>Organizador que aprovou</th>
         </thead>
         <tbody>
           <?php

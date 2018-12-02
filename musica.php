@@ -99,15 +99,15 @@
             orquestras, nas músicas de concerto, mas pode ser usado nos outros estilos musicais e o líder dos violinos nas orquestras é chamado de spalla, e em seguida o maestro, líder da orquestra.</p>
         </div>
     </div>
-    <br>
+    <br><br>
 </div>
 
 <div class="colorOne">
-    <br> <br>
+    <br>
 <div class="ui justified container">
 <h2 class="ui centered header"><h2>
         <div class="ui comments">
-            <h1 class="ui centered dividing header">Confia aqui alguns comentários sobre este curso</h1>
+            <h1 class="ui dividing header">Confia aqui alguns comentários sobre este curso</h1>
             <div class="comment">
                 <a class="avatar">
                     <img src="https://pbs.twimg.com/profile_images/603982486188761088/IrTRobr2_400x400.png">
@@ -179,34 +179,9 @@
                 </div>
             </div>
         </div>
-<br><br>
+<br>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <footer class="colorTwo">
         <div class="ui center aligned container">

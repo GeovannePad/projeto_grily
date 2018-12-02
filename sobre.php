@@ -54,55 +54,32 @@
     </nav>
     <div class="banner">
         <img src="midia/predio-frente2.jpg" class="banner-image">
-        <p class="text-light display-4 centrodois">Sobre nós</p>
+        <p class="text-light display-4 centrodois"><i class="folder open icon"></i> Sobre nós</p>
     </div>
   
-    <div class="ui justified container">
-        <br><br>
-        <div class="ui grid">
-            <div class="five wide column">
-                <div class="ui link card">
-  <div class="content">
-    <div class="header">História</div>
-    <div class="meta">
-      <span class="category">quem somos...</span>
-    </div>
-    <div class="description">
-      <p>A Escola de Arte GRILY, foi fundada em 2000. Seus diretores, Marco Nanini, com mais de 40 anos de experiência no
+    <!---começa o content--->
+<br>
+<div class="ui justified container">
+    <div class="ui basic segment">
+    <img class="ui large right floated image" src="https://www.missoulacurrent.com/wp-content/uploads/2017/07/UM.jpg" alt="">
+    <div class="font-big">
+    <p>A Escola de Arte GRILY, foi fundada em 2000. Seus diretores, Marco Nanini, com mais de 40 anos de experiência no
             mundo da arte, e com seu sucesso nacional de “A Grande Família”, administra hoje a unidade própria em Niterói-RJ,
             com o cursos técnicos profissionalizantes em danças de rua, ballet, contemporâneo, desenho artístico, ilustração,
-            pintura, artes cênicas e entre outros. <br> No ano de 2002 uma de nossas turmas ganhou em primeiro lugar no concurso regional de expressão corporal como a melhor
+            pintura, artes cênicas e entre outros.</p><p>No ano de 2002 uma de nossas turmas ganhou em primeiro lugar no concurso regional de expressão corporal como a melhor
             interpretação grupal. Neste mesmo ano recebeu uma arrecadação da atriz e bailarina Claudia Raia para a criação
-            de um espaço para nosso curso de movimentos rítmicos. Em sua homenagem o local foi nomeado como “Espaço Raia”.<br>O ambiente em todas as unidades é adequado e agradável para o ensino. Você recebe atendimento personalizado dentro
+            de um espaço para nosso curso de movimentos rítmicos. Em sua homenagem o local foi nomeado como “Espaço Raia”.</p><p>O ambiente em todas as unidades é adequado e agradável para o ensino. Você recebe atendimento personalizado dentro
             do seu ritmo, ou seja, as turmas são formadas com o número máximo de dezoito alunos onde o professor(es) atende
-            às necessidades de cada um individualmente, obtendo assim, um excelente aproveitamento. </p>
-            </div>
-          </div>
-        </div>
-            </div>
-            <div class="eleven wide column">
-                <div class="ui move down reveal">
-                  <div class="visible content">
-                    <img src="https://www.missoulacurrent.com/wp-content/uploads/2017/07/UM.jpg" alt="" width="100%">
-                  </div>
-                  <div class="hidden content">
-                    <img src="https://1.bp.blogspot.com/-3FTOHDUH3Ko/WZA4HBo12yI/AAAAAAAAB04/Vil_lYokERsi9E-Wzm7jF05fxkTGK-HSACLcBGAs/s1600/Massachusetts%2BHall.jpg" width="100%">
-                  </div>
-                </div>
-            
-            </div>
-        </div>
-        <br><br>
-        <p>Na GRILY são formados profissionais de ótimo nível, capacitados para enfrentar com sucesso as exigências do mercado de trabalho. O método de nossa escola é único e garante o desenvolvimento artístico e técnico de seus alunos.
-
-"O Artista não é apenas uma pessoa que trabalha num quartinho de fundo em sua casa, o Artista é aquele que transforma o mundo, mostra o que é belo através das formas, das cores e das várias interpretações que possamos dar as suas obras. O Artista sustenta-se pela arte de alguma forma; lecionando, pintando, desenhando, ilustrando, caricaturando, etc.", e a GRILY têm obtido ótimos resultados investindo na profissionalização do artista. Venha assistir a uma aula gratuita e tire suas próprias conclusões.</p>
-        <br>
-        <div class="ui raised segment">
-            <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit massa id nibh maximus, ut tristique arcu vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque non velit ac sapien rutrum commodo. Quisque pharetra condimentum velit, a pretium sapien ultricies sit amet. Nullam quis tempus urna. Morbi imperdiet odio eu porttitor faucibus. Sed eget ipsum velit. Quisque finibus libero vel quam pellentesque convallis sit amet in mi. Morbi eu metus vel dolor bibendum sodales non eu dui."</em> - Alguém legal</p>
-        </div>
+            às necessidades de cada um individualmente, obtendo assim, um excelente aproveitamento.</p>
+    <img class="ui medium left floated image" src="https://1.bp.blogspot.com/-3FTOHDUH3Ko/WZA4HBo12yI/AAAAAAAAB04/Vil_lYokERsi9E-Wzm7jF05fxkTGK-HSACLcBGAs/s1600/Massachusetts%2BHall.jpg">
+    <p>Na GRILY são formados profissionais de ótimo nível, capacitados para enfrentar com sucesso as exigências do mercado de trabalho. O método de nossa escola é único e garante o desenvolvimento artístico e técnico de seus alunos. A GRILY têm obtido ótimos resultados investindo na profissionalização do artista. Venha assistir a uma aula gratuita e tire suas próprias conclusões.</p>
     </div>
-
+</div>
+    <div class="ui orange floated right segment"><em>"O Artista não é apenas uma pessoa que trabalha num quartinho de fundo em sua casa, o Artista é aquele que transforma o mundo, mostra o que é belo através das formas, das cores e das várias interpretações que possamos dar as suas obras. O Artista sustenta-se pela arte de alguma forma; lecionando, pintando, desenhando, ilustrando, caricaturando, etc."</em> - Marco Manini</div>
+</div>
 <br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+
 <div class="ui justified container">
     <h1><i class="address book icon"></i>Informações básicas</h1>
 <table class="ui celled table">

@@ -1,8 +1,21 @@
+.font-big{
+font-size: 115%
+}
+
+.top-margin{
+  margin-top: 10%;
+}
+
+.right-margin{
+  margin-right: 30%;
+}
+
+/*
 .orange{
 	background-color: #FFA500;
 	color: #FFA500;
 }
-
+*/
 .orange-dark{
 	color: #9f6000;
 }

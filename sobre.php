@@ -45,9 +45,14 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
-                    </li>
+                    <?php 
+                        require_once("config.php"); 
+                        if (!isset($_SESSION["estudante"])) {
+                            echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a></li>';
+                        }else{
+                            echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="perfil_estudante.php">Perfil</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

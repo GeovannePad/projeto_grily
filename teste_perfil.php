@@ -13,7 +13,7 @@
 </head>
 
 <?php 
-require_once("config.php"); 
+/*require_once("config.php"); 
 if (!isset($_SESSION["estudante"])) {
   header("Location: plogin.php?err=logar");
 }
@@ -22,8 +22,9 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
 } else {
   $url = "midia/imagens_estudantes/" . $_SESSION["estudante"]["imagem"];
 }
+*/
 ?>
-<body>
+<body class="bg">
 <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="">GRILY</a>
@@ -64,107 +65,91 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
     </nav>
     <div class="banner">
         <img src="midia/predio-frente2.jpg" class="banner-image">
-        <p class="text-light display-4 centrodois"><i class="music icon"></i> Música</p>
+        <p class="text-light display-4 centrodois"><i class="user icon"></i> Meu perfil</p>
     </div>
 
-<div class="ui container">
-  <div class="ui fourteen column centered grid container stackable">
-    <div class="fourteen wide column ui segment">
-      <div class="ui grid container stackable">
 
-        <div class="row">
-          <div class="two wide column"></div>
-            <div class="twelve wide column">
+<!---conteudo-->
+<br><br>
+<div class="ui justified container">
+    <div class="ui grid">
+        <div class="six wide column">
             <img src=<?= $url ?> alt="User Photo" class="ui medium centered circular fluid image" style="height:400px; width:400px; margin-bottom: 10px;">
             <button class="ui primary fluid alterbutton button">Alterar imagem</button>
-          </div>
-          <div class="two wide column"></div>
         </div>
-
-        <div class="row">
-          <div class="two wide column "></div>
-          <div class="center aligned twelve wide column hidden content">
-          <form action="actions.php?action=alterar_dados" method="POST" class="ui form" id="dataForm">
-          <table class="ui single line table stackable dados">
-              <thead>
-                <th colspan="2">Dados Pessoais</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>RM</td>
-                  <td><?= $_SESSION["estudante"]["rm"]?></td>
-                </tr>
-                <tr>
-                  <td>E-mail</td>
-                  <td><?= $_SESSION["estudante"]["login"]?></td>
-                </tr>
-                <tr>
-                  <td>Nome Completo</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["nome"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="nome" value="<?= $_SESSION["estudante"]["nome"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Data de nascimento</td>
-                  <td>
-                    <span class="dataSpan"><?=$_SESSION["estudante"]["dtnascimento"]?></span>
-                    <?php
-                      $dateString = $_SESSION["estudante"]["dtnascimento"];
-                      $myDateTime = DateTime::createFromFormat('d/m/Y', $dateString);
-                      $newDateString = $myDateTime->format('Y-m-d');
-                    ?>
-                    <input class="esconderInputs inputData" type="date" name="dtnascimento" value="<?=$newDateString?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Endereço</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["endereco"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="endereco" value="<?= $_SESSION["estudante"]["endereco"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Curso</td>
-                  <td><?= $_SESSION["estudante"]["idcurso"]?></td>
-                </tr>
-                <tr>
-                  <td>Telefone</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["fone"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="fone" value="<?= $_SESSION["estudante"]["fone"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Biografia</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["biografia"]?></span>
-                    <textarea class="esconderInputs inputData" name="biografia">
-                    <?= $_SESSION["estudante"]["biografia"]?>
-                    </textarea>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-            
-          </div>
-          <div class="two wide column"></div>
+        <div class="ten wide column">
+            <form action="actions.php?action=alterar_dados" method="POST" class="ui form" id="dataForm">
+            <table class="ui table dados">
+                <thead>
+                    <th colspan="2">Dados Pessoais</th>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>RM</td>
+                    <td><?= $_SESSION["estudante"]["rm"]?></td>
+                    </tr>
+                    <tr>
+                    <td>E-mail</td>
+                    <td><?= $_SESSION["estudante"]["login"]?></td>
+                    </tr>
+                    <tr>
+                    <td>Nome Completo</td>
+                    <td>
+                        <span class="dataSpan"><?= $_SESSION["estudante"]["nome"]?></span>
+                        <input class="esconderInputs inputData" type="text" name="nome" value="<?= $_SESSION["estudante"]["nome"]?>">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Data de nascimento</td>
+                    <td>
+                        <span class="dataSpan"><?=$_SESSION["estudante"]["dtnascimento"]?></span>
+                        <?php
+                        $dateString = $_SESSION["estudante"]["dtnascimento"];
+                        $myDateTime = DateTime::createFromFormat('d/m/Y', $dateString);
+                        $newDateString = $myDateTime->format('Y-m-d');
+                        ?>
+                        <input class="esconderInputs inputData" type="date" name="dtnascimento" value="<?=$newDateString?>">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Endereço</td>
+                    <td>
+                        <span class="dataSpan"><?= $_SESSION["estudante"]["endereco"]?></span>
+                        <input class="esconderInputs inputData" type="text" name="endereco" value="<?= $_SESSION["estudante"]["endereco"]?>">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Curso</td>
+                    <td><?= $_SESSION["estudante"]["idcurso"]?></td>
+                    </tr>
+                    <tr>
+                    <td>Telefone</td>
+                    <td>
+                        <span class="dataSpan"><?= $_SESSION["estudante"]["fone"]?></span>
+                        <input class="esconderInputs inputData" type="text" name="fone" value="<?= $_SESSION["estudante"]["fone"]?>">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Biografia</td>
+                    <td>
+                        <span class="dataSpan"><?= $_SESSION["estudante"]["biografia"]?></span>
+                        <textarea class="esconderInputs inputData" name="biografia">
+                        <?= $_SESSION["estudante"]["biografia"]?>
+                        </textarea>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </form>
         </div>
-        <div class="row">
-          <div class="two wide column"></div>
-          <div class="twelve wide column">
-            <a class="ui left floated primary button data-button" href="palterar_senha.php" role="button">Alterar Senha</a>
-            <a class="ui right floated negative button data-button" href="actions.php?action=deslogar" role="button">Sair</a>
-            <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
-            <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>
-            <a class="ui right floated primary button data-button" role="button" id="botaoEditar">Editar</a>
-          </div>
-          <div class="two wide column"></div>
-        </div> 
-      </div>
     </div>
-  </div>
+</div>
+        
+
+
+
+
+<!--janelas modais-->
   <div class="ui coupled modal image">
     <div class="header">Upload de imagem</div>
     <i class="close icon"></i>
@@ -203,6 +188,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       </button>
     </div>
   </div>
+
   <div class="ui small coupled modal grande">
     <div class="ui icon header"></div>
     <div class="content">
@@ -228,12 +214,8 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
     </div>
   </div>
 </div>
-  <script src="css-js/jquery-3.3.1.min.js"></script>
-  <script src="css-js/js-aditional.js"></script>
-  <script src="css-js/Semantic-UI-CSS-master/semantic.min.js"></script>
 
   <script>
-    
     $(document).ready(function(){
       $(".form-button").hide();
       <?php

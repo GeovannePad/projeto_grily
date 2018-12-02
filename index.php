@@ -45,9 +45,14 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
-                    </li>
+                    <?php 
+                        require_once("config.php"); 
+                        if (!isset($_SESSION["estudante"])) {
+                            echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a></li>';
+                        }else{
+                            echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="perfil_estudante.php">Perfil</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -101,17 +106,17 @@
             <h1>Confira imagens</h1>
             <div class="ui medium images">
                 <img class="myImg" src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-science-lab-1.jpg">
-                <img class="myImg" src="https://www.concordmonitor.com/getattachment/110da633-c73f-4734-885e-2dce58cf7c2a/RMSspill-cm-092016-ph01">
-                <img class="myImg" src="http://assets.ecenglish.com/blogs/uploads/sites/34/2014/10/see-inside-our-school.jpg">
-                <img class="myImg" src="https://www.eveningexpress.co.uk/wp-content/uploads/sites/10/2018/07/5b52fb8a69241-559x372.jpg">
-                <img class="myImg" src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-Cafe-J-Food-Services-1.jpg"
+                <img class="myImg2" src="https://www.concordmonitor.com/getattachment/110da633-c73f-4734-885e-2dce58cf7c2a/RMSspill-cm-092016-ph01">
+                <img class="myImg3" src="http://assets.ecenglish.com/blogs/uploads/sites/34/2014/10/see-inside-our-school.jpg">
+                <img class="myImg4" src="https://www.eveningexpress.co.uk/wp-content/uploads/sites/10/2018/07/5b52fb8a69241-559x372.jpg">
+                <img class="myImg5" src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-Cafe-J-Food-Services-1.jpg"
                     alt="">
-                <img class="myImg" src="http://assets.inarkansas.com/64900/north-little-rock-high-school-renovations-763.jpg"
+                <img class="myImg6" src="http://assets.inarkansas.com/64900/north-little-rock-high-school-renovations-763.jpg"
                     alt="">
-                <img class="myImg" src="https://news-img-9a9cfd28311db221b19757424a2f3b66.s3.amazonaws.com/articles/MillCreekERW11457393003.jpg"
+                <img class="myImg7" src="https://news-img-9a9cfd28311db221b19757424a2f3b66.s3.amazonaws.com/articles/MillCreekERW11457393003.jpg"
                     alt="">
-                <img class="myImg" src="https://merchantview360.com/wp-content/uploads/2014/05/IMG_18801.jpg" alt="">
-                <img class="myImg" src="https://cdn.vox-cdn.com/thumbor/l3okHkkHR0iaqGtnbECgeToVAog=/0x0:800x533/920x613/filters:focal(336x202:464x330):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/61311607/JonesColl9.0.0.1485190576.0.jpg"
+                <img class="myImg8" src="https://merchantview360.com/wp-content/uploads/2014/05/IMG_18801.jpg" alt="">
+                <img class="myImg9" src="https://cdn.vox-cdn.com/thumbor/l3okHkkHR0iaqGtnbECgeToVAog=/0x0:800x533/920x613/filters:focal(336x202:464x330):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/61311607/JonesColl9.0.0.1485190576.0.jpg"
                     alt="">
             </div>
         </div>
@@ -133,7 +138,7 @@
                                     <div class="ui dimmer">
                                         <div class="content">
                                             <div class="center">
-                                                <a href="https://semantic-ui.com/views/card.html">
+                                                <a href="teatro.php">
                                                     <h1>Teatro</h1>
                                                 </a>
                                             </div>
@@ -147,7 +152,7 @@
                                     <div class="ui dimmer">
                                         <div class="content">
                                             <div class="center">
-                                                <a href="https://semantic-ui.com/views/card.html">
+                                                <a href="danca.php">
                                                     <h1>Dança</h1>
                                                 </a>
                                             </div>
@@ -163,7 +168,7 @@
                                     <div class="ui dimmer">
                                         <div class="content">
                                             <div class="center">
-                                                <a href="https://semantic-ui.com/views/card.html">
+                                                <a href="pintura.php">
                                                     <h1>Pintura</h1>
                                                 </a>
                                             </div>
@@ -177,7 +182,7 @@
                                     <div class="ui dimmer">
                                         <div class="content">
                                             <div class="center">
-                                                <a href="https://semantic-ui.com/views/card.html">
+                                                <a href="musica.php">
                                                     <h1>Música</h1>
                                                 </a>
                                             </div>
@@ -261,11 +266,82 @@
     <!-- as janela modal -->
     <div id="myModal" class="ui basic modal">
         <div class="image content">
-            <div class="ui floated image top-margin">
+            <div class="ui centered huge image top-margin">
                 <img src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-science-lab-1.jpg">
             </div>
             <div class="description">
-
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal2">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="https://www.concordmonitor.com/getattachment/110da633-c73f-4734-885e-2dce58cf7c2a/RMSspill-cm-092016-ph01">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal3">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="http://assets.ecenglish.com/blogs/uploads/sites/34/2014/10/see-inside-our-school.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal4">
+        <div class="image content">
+            <div class="ui centered masive image top-margin">
+                <img src="https://www.eveningexpress.co.uk/wp-content/uploads/sites/10/2018/07/5b52fb8a69241-559x372.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal5">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-Cafe-J-Food-Services-1.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal6">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="http://assets.inarkansas.com/64900/north-little-rock-high-school-renovations-763.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal7">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="https://news-img-9a9cfd28311db221b19757424a2f3b66.s3.amazonaws.com/articles/MillCreekERW11457393003.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal8">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="https://merchantview360.com/wp-content/uploads/2014/05/IMG_18801.jpg">
+            </div>
+            <div class="description">
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="ui basic modal9">
+        <div class="image content">
+            <div class="ui centered huge image top-margin">
+                <img src="https://cdn.vox-cdn.com/thumbor/l3okHkkHR0iaqGtnbECgeToVAog=/0x0:800x533/920x613/filters:focal(336x202:464x330):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/61311607/JonesColl9.0.0.1485190576.0.jpg">
+            </div>
+            <div class="description">
             </div>
         </div>
     </div>
@@ -291,12 +367,38 @@
 
         $(".myImg").click(function () {
             $('.ui.basic.modal').modal('show');
-            //alert("teste");
         });
 
         $(".myImg2").click(function () {
-            $('.ui.basic.modal').modal('show');
-            //alert("teste");
+            $('.ui.basic.modal2').modal('show');
+        });
+
+        $(".myImg3").click(function () {
+            $('.ui.basic.modal3').modal('show');
+        });
+
+        $(".myImg4").click(function () {
+            $('.ui.basic.modal4').modal('show');
+        });
+
+        $(".myImg5").click(function () {
+            $('.ui.basic.modal5').modal('show');
+        });
+
+        $(".myImg6").click(function () {
+            $('.ui.basic.modal6').modal('show');
+        });
+
+        $(".myImg7").click(function () {
+            $('.ui.basic.modal7').modal('show');
+        });
+
+        $(".myImg8").click(function () {
+            $('.ui.basic.modal8').modal('show');
+        });
+
+        $(".myImg9").click(function () {
+            $('.ui.basic.modal9').modal('show');
         });
     </script>
 </body>

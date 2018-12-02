@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +10,9 @@
   <link rel="stylesheet" href="css-js/Semantic-UI-CSS-master/semantic.min.css">
   <link rel="stylesheet" href="css-js/css-aditional.css">
 </head>
-<body>
+
+<body class="bg">
+
   <div class="ui grid container stackable">
     <div class="sixteen wide column">
       <div class="ui center aligned segment">

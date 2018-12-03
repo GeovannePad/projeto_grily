@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="css-js/css-aditional.css">
   <link rel="stylesheet" href="css-js/Semantic-UI-CSS-master/semantic.min.css">
   <link rel="stylesheet" href="css-js/Semantic-UI-CSS-master/components/modal.css">
@@ -31,107 +33,101 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
   $url = "midia/imagens_estudantes/" . $_SESSION["estudante"]["imagem"];
 }
 ?>
-<body style="background-color: lightgrey;">
-
-  <div class="ui fourteen column centered grid container stackable">
-
-    <div class="fourteen wide column ui segment">
-      <div class="ui grid container stackable">
-
-        <div class="row">
-          <div class="two wide column"></div>
-            <div class="twelve wide column">
-            <img src=<?= $url ?> alt="User Photo" class="ui medium centered circular fluid image" style="height:400px; width:400px; margin-bottom: 10px;">
-            <button class="ui primary fluid alterbutton button">Alterar imagem</button>
-          </div>
-          <div class="two wide column"></div>
+<body class="bg">
+<?php require_once("navbar.php"); ?>
+<div class="banner">
+    <img src="midia/predio-frente2.jpg" class="banner-image">
+    <p class="text-light display-4 centrodois"><i class="user icon"></i> Meu perfil</p>
+</div>
+<br><br>
+<div class="ui justified container">
+    <div class="ui grid">
+        <div class="six wide column">
+                  <img src=<?= $url ?> alt="User Photo" class="ui medium centered circular image">
+                  <button class="ui secondary fluid alterbutton button">Alterar imagem</button>
         </div>
-
-        <div class="row">
-          <div class="two wide column "></div>
-          <div class="center aligned twelve wide column hidden content">
-          <form action="actions.php?action=alterar_dados" method="POST" class="ui form" id="dataForm">
-          <table class="ui single line table stackable dados">
-              <thead>
-                <th colspan="2">Dados Pessoais</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>RM</td>
-                  <td><?= $_SESSION["estudante"]["rm"]?></td>
-                </tr>
-                <tr>
-                  <td>E-mail</td>
-                  <td><?= $_SESSION["estudante"]["login"]?></td>
-                </tr>
-                <tr>
-                  <td>Nome Completo</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["nome"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="nome" value="<?= $_SESSION["estudante"]["nome"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Data de nascimento</td>
-                  <td>
-                    <span class="dataSpan"><?=$_SESSION["estudante"]["dtnascimento"]?></span>
-                    <?php
-                      $dateString = $_SESSION["estudante"]["dtnascimento"];
-                      $myDateTime = DateTime::createFromFormat('d/m/Y', $dateString);
-                      $newDateString = $myDateTime->format('Y-m-d');
-                    ?>
-                    <input class="esconderInputs inputData" type="date" name="dtnascimento" value="<?=$newDateString?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Endereço</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["endereco"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="endereco" value="<?= $_SESSION["estudante"]["endereco"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Curso</td>
-                  <td><?= $_SESSION["estudante"]["idcurso"]?></td>
-                </tr>
-                <tr>
-                  <td>Telefone</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["fone"]?></span>
-                    <input class="esconderInputs inputData" type="text" name="fone" value="<?= $_SESSION["estudante"]["fone"]?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>Biografia</td>
-                  <td>
-                    <span class="dataSpan"><?= $_SESSION["estudante"]["biografia"]?></span>
-                    <textarea class="esconderInputs inputData" name="biografia">
-                    <?= $_SESSION["estudante"]["biografia"]?>
-                    </textarea>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-            
-          </div>
-          <div class="two wide column"></div>
+        <div class="ten wide column">
+                <form action="actions.php?action=alterar_dados" method="POST" class="ui form" id="dataForm">
+                <table class="ui single line table stackable dados">
+                    <thead>
+                      <th colspan="2">Dados Pessoais</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>RM</td>
+                        <td><?= $_SESSION["estudante"]["rm"]?></td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td><?= $_SESSION["estudante"]["login"]?></td>
+                      </tr>
+                      <tr>
+                        <td>Nome Completo</td>
+                        <td>
+                          <span class="dataSpan"><?= $_SESSION["estudante"]["nome"]?></span>
+                          <input class="esconderInputs inputData" type="text" name="nome" value="<?= $_SESSION["estudante"]["nome"]?>">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Data de nascimento</td>
+                        <td>
+                          <span class="dataSpan"><?=$_SESSION["estudante"]["dtnascimento"]?></span>
+                          <?php
+                            $dateString = $_SESSION["estudante"]["dtnascimento"];
+                            $myDateTime = DateTime::createFromFormat('d/m/Y', $dateString);
+                            $newDateString = $myDateTime->format('Y-m-d');
+                          ?>
+                          <input class="esconderInputs inputData" type="date" name="dtnascimento" value="<?=$newDateString?>">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Endereço</td>
+                        <td>
+                          <span class="dataSpan"><?= $_SESSION["estudante"]["endereco"]?></span>
+                          <input class="esconderInputs inputData" type="text" name="endereco" value="<?= $_SESSION["estudante"]["endereco"]?>">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Curso</td>
+                        <td><?= $_SESSION["estudante"]["idcurso"]?></td>
+                      </tr>
+                      <tr>
+                        <td>Telefone</td>
+                        <td>
+                          <span class="dataSpan"><?= $_SESSION["estudante"]["fone"]?></span>
+                          <input class="esconderInputs inputData" type="text" name="fone" value="<?= $_SESSION["estudante"]["fone"]?>">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Biografia</td>
+                        <td>
+                          <span class="dataSpan"><?= $_SESSION["estudante"]["biografia"]?></span>
+                          <textarea class="esconderInputs inputData" name="biografia">
+                          <?= $_SESSION["estudante"]["biografia"]?>
+                          </textarea>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>
+                            <a class="ui right floated inverted yellow button data-button" role="button" id="botaoEditar">Editar</a>
+                            <a class="ui right floated inverted red button data-button" href="palterar_senha.php" role="button">Alterar Senha</a>
+                          </td>  
+                    </tr>
+                    </tbody>
+                  </table>
+                </form>
         </div>
-        <div class="row">
-          <div class="two wide column"></div>
-          <div class="twelve wide column">
-            <a class="ui left floated primary button data-button" href="palterar_senha.php" role="button">Alterar Senha</a>
-            <a class="ui right floated negative button data-button" href="actions.php?action=deslogar" role="button">Sair</a>
-            <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
-            <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>
-            <a class="ui right floated primary button data-button" role="button" id="botaoEditar">Editar</a>
-          </div>
-          <div class="two wide column"></div>
-        </div> 
-      </div>
     </div>
-  </div>
-  <div class="ui coupled modal image">
+<br>
+
+      <button class="ui right floated negative button form-button" form="dataForm" id="botaoCancelar" type="reset">Cancelar</button>
+      <button class="ui right floated positive button form-button" form="dataForm" type="submit">Alterar</button>
+            
+</div>
+</div>
+  <!---janelas modais--->
+  <div class="modal-top ui coupled modal image">
     <div class="header">Upload de imagem</div>
     <i class="close icon"></i>
 
@@ -194,9 +190,12 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
     </div>
   </div>
   <script src="css-js/jquery-3.3.1.min.js"></script>
-  <script src="css-js/js-aditional.js"></script>
-  <script src="css-js/Semantic-UI-CSS-master/semantic.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="css-js/js-aditional.js"></script>
+    <script src="css-js/Semantic-UI-CSS-master/semantic.min.js"></script>
   <script>
     
     $(document).ready(function(){
@@ -221,8 +220,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         allowMultiple: true
       });
       $(".alterbutton").click(function(){
-      $('.modal.image')
-      .modal("show");
+      $('.modal.image').modal("show");
     });
     $("input:file").change(function(){
       if (typeof (FileReader) != "undefined") {
@@ -242,13 +240,11 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         alert("Este navegador nao suporta FileReader.");
       }
     });
-
     $("#botaoEditar").click(function(){
       $(".inputData").show();
       $(".dataSpan").hide();
       $(".data-button").hide();
       $(".form-button").show();
-
     });
     $("#botaoCancelar").click(function(){
       $(".inputData").hide();
@@ -256,10 +252,8 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $(".dataSpan").show();
       $(".data-button").show();
     });
-
   });
     
-
   <?php
     if (isset($_GET["err_senha"]) && $_GET["err_senha"] == "vazio") {
       echo 'var erro_senha="vazio"';
@@ -279,6 +273,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         break;
     default:
         echo 'var erro = "nada";';
+        echo 'var erro_senha = "nada"';
       break;
   }
 }

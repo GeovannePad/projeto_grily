@@ -18,7 +18,7 @@
 
     <style type="text/css">
       body {
-        background-color: #DADADA;
+        background-color: #FFA500;
       }
       body > .grid {
         height: 100%;
@@ -31,8 +31,8 @@
       }
     </style>
   </head>
+
   <body>
-    
   <div class="ui middle aligned center aligned grid orange">
   <div class="column">
     <h2 class="ui teal image header">

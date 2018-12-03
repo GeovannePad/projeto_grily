@@ -14,49 +14,73 @@
 </head>
 
 <body class="bg">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="">GRILY</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="sobre.php">Sobre nós</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Cursos
-                        </a>
-                        <div class="dropdown-menu colorTree" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="teatro.php">Teatro</a>
-                            <a class="dropdown-item" href="danca.php">Dança</a>
-                            <a class="dropdown-item" href="pintura.php">Pintura</a>
-                            <a class="dropdown-item" href="musica.php">Música</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php require_once("navbar.php"); ?>
     <div class="banner">
         <img src="midia/predio-frente2.jpg" class="banner-image">
-        <p class="text-light display-4 centrodois">insira título aqui</p>
+        <p class="text-light display-4 centrodois"><i class="child icon"></i> Dança</p>
     </div>
-  
+ 
+<div class="ui justified container">
+    <br><br>
+    <p class="font-big">Nossos alunos tem a liberdade para escolher o tipo de dança do qual gostaria de aprender. Os mais populares são:
+    <div class="ui piled segment">
+        <div class="font-big ui grid">
+            <div class="six wide column">
+                <img src="/midia/hip-hop.jpg" class="ui large image" alt=""> 
+            </div>  
+            <div class="ten wide column">
+                <p><h2>Hip Hop (Street dance) <div class="ui huge star rating"></div></h2>
+                Mais do que um estilo de dança influenciado por vários ritmos, a dança de rua sempre foi associada à cultura e a identidade negra, sobretudo a partir da década de 70. Nesse período, o movimento que teve início com a dança se estendeu para outras manifestações culturais e artísticas, como a pintura, a poesia, o grafite e o visual (modo de se vestir, de andar, etc.). A esse novo estilo nascido nos guetos nova-iorquinos (Bronx, Brooklin e Harlem) deu-se o nome de Hip – Hop. Em aulas desse estilo praticamos com os alunos: Movimentos fortes,sincronizados e harmoniosos,rápidos,simétricos e assimétricos.</p>
+            </div>
+        </div>
+    </div>
+    <div class="ui piled segment">
+        <div class="font-big ui grid">
+            <div class="six wide column">
+                <img src="/midia/ballet.jpg" class="ui large image" alt=""> 
+            </div>  
+            <div class="ten wide column">
+                <p><h2>Ballet <div class="ui huge star rating" data-rating="4"></div></h2>
+                É um tipo de dança influente a nível mundial que possui uma forma altamente técnica e um vocabulário próprio. Este gênero de dança é muito difícil de dominar e requer muita prática. Ele é ensinado em todo o mundo possui diferentes técnicas, entre elas mímica e atuação, são coreografadas e realizadas por artistas formados e também acompanhadas por arranjos musicais.</p>
+            </div>
+        </div>
+    </div>
+    <div class="ui piled segment">
+        <div class="font-big ui grid">
+            <div class="six wide column">
+                <img src="/midia/jazz.jpg" class="ui large image" alt=""> 
+            </div>  
+            <div class="ten wide column">
+                <p><h2>Jazz <div class="ui huge star rating"></div></h2>
+                O Jazz é uma forma de expressão pessoal criada e sustentada pelo improviso. É possível descrever essa dança como uma manifestação corporal acompanhada de música, marcada pela polirritmia (quando o corpo acompanha vários ritmos simultaneamente), movimentos sincopados (quando há rompimento dos movimentos já internalizados e estabelecem-se outros padrões de movimentos) e pelo swing. Ainda que a influência da música jazz seja bastante intensa sobre a constituição dessa dança, sua prática não necessariamente é acompanhada desse estilo de música, o que permite ao praticante liberdade também na escolha musical.</p>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <footer class="colorTwo">
         <div class="ui center aligned container">
             <br>
@@ -86,6 +110,12 @@
         $('.special .image').dimmer({
             on: 'hover'
         });
+        $('.ui.rating')
+            .rating({
+                initialRating: 5,
+                maxRating: 5
+            })
+            ;
     </script>
 </body>
 

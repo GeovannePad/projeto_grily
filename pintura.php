@@ -17,68 +17,114 @@
 </head>
 
 <body class="bg">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="">GRILY</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="sobre.php">Sobre nós</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Cursos
-                        </a>
-                        <div class="dropdown-menu colorTree" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="teatro.php">Teatro</a>
-                            <a class="dropdown-item" href="danca.php">Dança</a>
-                            <a class="dropdown-item" href="pintura.php">Pintura</a>
-                            <a class="dropdown-item" href="musica.php">Música</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php require_once("navbar.php"); ?>
     <div class="banner">
         <img src="midia/predio-frente2.jpg" class="banner-image">
-        <p class="text-light display-4 centrodois">insira título aqui</p>
+        <p class="text-light display-4 centrodois"><i class="paint brush icon"></i> Pintura</p>
     </div>
   
+<div class="font-big ui justified container">
+    <br><br>
+    <div class="ui grid">
+        <div class="eight wide column"> <img src="https://escolaproarte.com.br/wp-content/uploads/2015/08/marilyn-monroe-88522.jpg" class="ui centered large image"></div>
+        <div class="eight wide column"><p><em>"A arte está presente em nossas vidas todos os dias, em suas diversas formas e manifestações. A palavra arte vem
+                        do latim e significa habilidade. O termo pode ser entendido como uma atividade humana ligada à sensibilidade,
+                        à criatividade e à imaginação."</em></p>
+                        <p><h2 class="ui orange header"><strong>"O que é desenho artístico?"</strong></h2>Nada mais é do que colocar no papel, ou na tela, enfim quaisquer lugares em que queira desenhar, tudo o que
+                        sente. Desenhar de maneira artística é não se prender a regras e procedimentos; você pode soltar a imaginação
+                        e colocá-la em forma de arte por meio de um desenho. No desenho artístico, você também não precisa se prender
+                        a materiais específicos; tem total liberdade para usar o papel, lápis, cores, enfim, tudo o que quiser. Os
+                        artistas geralmente colocam em forma de desenho o modo com encaram a realidade e a vontade de desenhar todos
+                        os detalhes dentro deste âmbito. O desenho artístico não necessita de regras para ser feito nem de uma linha
+                        de criação.
+                         </p>
+        </div>
+    </div>
+    <br>
+    <div class="ui tall stacked segment">
+        <h2>Ilustração</h2>
+        <p>Ilustração é uma imagem utilizada para acompanhar, explicar, interpretar, acrescentar informação, sintetizar ou até simplesmente decorar um texto. Embora o termo seja usado frequentemente para se referir a desenhos, pinturas ou colagens, uma fotografia também é uma ilustração. 
+        São comuns em jornais, revistas e livros, especialmente na literatura infanto-juvenil (assumindo, muitas vezes, um papel mais importante que o texto), sendo também utilizadas na publicidade e na propaganda. Existem também ilustrações independentes de texto, onde a própria ilustração é a informação principal. Um exemplo seria um livro sem texto, não incomum em quadrinhos ou livros infantis. Alguns tipos de ilustrações: </p>
+    </div>
+    <br>
+</div>
 
-<div class="ui grid">
-  <div class="eight wide column"> <img src="https://escolaproarte.com.br/wp-content/uploads/2015/08/marilyn-monroe-88522.jpg" width="75%"></div>
-  <div class="eight wide column"><p>"A arte está presente em nossas vidas todos os dias, em suas diversas formas e manifestações. A palavra arte vem
-                do latim e significa habilidade. O termo pode ser entendido como uma atividade humana ligada à sensibilidade,
-                à criatividade e à imaginação.
-                <br>
-                <br>
-                <em>
-                    <strong>"O que é desenho artístico?" </strong>
-                </em>
-                <br>Nada mais é do que colocar no papel, ou na tela, enfim quaisquer lugares em que queira desenhar, tudo o que
-                sente. Desenhar de maneira artística é não se prender a regras e procedimentos; você pode soltar a imaginação
-                e colocá-la em forma de arte por meio de um desenho. No desenho artístico, você também não precisa se prender
-                a materiais específicos; tem total liberdade para usar o papel, lápis, cores, enfim, tudo o que quiser. Os
-                artistas geralmente colocam em forma de desenho o modo com encaram a realidade e a vontade de desenhar todos
-                os detalhes dentro deste âmbito. O desenho artístico não necessita de regras para ser feito nem de uma linha
-                de criação.
-            </p></div>
+<div style="background-color:#ffcb87">
+    <br><br>
+    <div class="font-big ui justified container">
+            <div class="ui items">
+                <div class="item">
+                    <div class="image">
+                        <img src="\midia\art.jpg">
+                    </div>
+                    <div class="content">
+                        <a class="header">Água-forte</a>
+                    <div class="meta">
+                        <span>Descrição</span>
+                    </div>
+                    <div class="description">
+                        <p>É uma modalidade de gravura que é feita usando uma matriz de metal, normalmente de ferro, zinco, cobre, alumínio ou latão.</p>
+                    </div>
+                    <div class="extra">
+                        Recém chegado em nossas instalações
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image">
+                        <img src="https://as3fotografia.files.wordpress.com/2013/03/cadejo_-xilografia_.jpg">
+                    </div>
+                    <div class="content">
+                        <a class="header">Xilogravura</a>
+                    <div class="meta">
+                        <span>Descrição</span>
+                    </div>
+                    <div class="description">
+                        <p>É uma antiga técnica, de origem chinesa, em que o artesão utiliza um pedaço de madeira para entalhar um desenho, deixando em relevo a parte que pretende fazer a reprodução. Em seguida, utiliza tinta para pintar a parte em relevo do desenho.</p>
+                    </div>
+                    <div class="extra">
+                        Muito famoso entre os alunos
+                    </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image">
+                        <img src="https://www.designerd.com.br/wp-content/uploads/2018/07/marcas-famosas-personificadas-ilustracoes-esoj-luna-15.jpg">
+                    </div>
+                    <div class="content">
+                        <a class="header">Ilustração digital</a>
+                    <div class="meta">
+                        <span>Descrição</span>
+                    </div>
+                    <div class="description">
+                        <p>É qualquer tipo de ilustração feita digitalmente, no computador, através de softwares.</p>
+                    </div>
+                    <div class="extra">
+                        Possuímos os melhores equipamentos
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>
+
+<div class="font-big ui justified container">
+    <br><br>
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <h2>Pintura</h2>
+            <p>A pintura refere-se genericamente à técnica de aplicar pigmento em forma pastosa, líquida ou em pó a uma superfície, a fim de colori-la, atribuindo-lhe matizes, tons e texturas. Em um sentido mais específico, é a arte de pintar uma superfície, tais como papel, tela, ou uma parede (pintura mural ou afrescos). Devido ao fato de grandes obras de arte, tais como a Mona Lisa e A Última Ceia, do renascentista Leonardo Da Vinci, serem pinturas a óleo, a técnica é historicamente considerada uma das mais tradicionais das artes plásticas.</p>
+        </div>
+        <div class="eight wide column">
+            <img class="ui centered big image" src="http://www.andradepinturas.com.br/wp-content/uploads/2016/11/Pintura-oleo.jpg" alt="">
+        </div>
+        <div class="eight wide column">
+            <img class="ui centered large image" src="https://img.elo7.com.br/product/original/102C784/poster-pinturas-famosas-gravura-02-poster-para-moldura.jpg" alt="">
+        </div>
+    </div>
+    <br><br>
 </div>
 
 

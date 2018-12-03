@@ -26,9 +26,6 @@
                             <a class="dropdown-item" href="musica.php">Música</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
-                    </li>
                     <?php 
                         require_once("config.php"); 
                         if (!isset($_SESSION["estudante"])) {

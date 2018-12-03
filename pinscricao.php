@@ -15,44 +15,7 @@
 </head>
 
 <body class="bg">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="">GRILY</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="sobre.php">Sobre nós</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Cursos
-                        </a>
-                        <div class="dropdown-menu colorTree" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="teatro.php">Teatro</a>
-                            <a class="dropdown-item" href="danca.php">Dança</a>
-                            <a class="dropdown-item" href="pintura.php">Pintura</a>
-                            <a class="dropdown-item" href="musica.php">Música</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="midia.php">Mídia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="pinscricao.php">Cadastre-se</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php require_once("navbar.php"); ?>
     <div class="banner">
         <img src="midia/predio-frente2.jpg" class="banner-image">
         <p class="text-light display-4 centrodois">Formulário de cadastro</p>

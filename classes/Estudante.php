@@ -46,7 +46,7 @@ class Estudante extends Inscricao
     $this->setImagem($imagem);
   }
   public function selectAllEstudantes(){
-    return $this->stmt->select("SELECT rm, nome, dtnascimento, endereco, fone, idcurso, biografia, idestudante, idusuario FROM estudantes");
+    return $this->stmt->select("SELECT rm, nome, dtnascimento, endereco, fone, idcurso, biografia, idusuario, idestudante FROM estudantes");
   }
 
   public function selectAllRms(){

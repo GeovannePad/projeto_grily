@@ -80,7 +80,7 @@ class Usuario extends Estudante
   }
 
   public function selectUsuariosByTipo($tipo){
-    return $this->stmt->select("SELECT nome, login, senha, tipo, dtregistro, idusuario FROM usuarios WHERE tipo = :TIPO",array(
+    return $this->stmt->select("SELECT nome, login, tipo, dtregistro, idusuario FROM usuarios WHERE tipo = :TIPO",array(
       ":TIPO"=>$tipo
     ));
   }

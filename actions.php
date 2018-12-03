@@ -20,13 +20,21 @@
       $login = $_POST["login"];
       $senha = $_POST["senha"];
       $logar = new Usuario();
-      $usuario = $logar->selectUsuarioEstudante($login, $senha);
+      $usuario = $logar->selectOneUsuario($login, $senha);
       if ($usuario[0]["tipo"] == "Organizador") {
+        $organizador = $logar->selectOneUsuario($login, $senha);
+        $_SESSION["organizador"] = $organizador[0];
         header("Location: painel_organizador.php");
       } else if ($usuario[0]["tipo"] == "Administrador"){
+        $listar = new Usuario();
+        $lista_usuarios = $listar->selectUsuariosByTipo("Administrador");
+        $administrador = $logar->selectOneUsuario($login, $senha);
+        $_SESSION["lista_usuarios"] = $lista_usuarios;
+        $_SESSION["administrador"] = $administrador[0];
         header("Location: painel_administrador.php");
       } else {
-        foreach ($usuario[0] as $key => $value) {
+        $estudante = $logar->selectUsuarioEstudante($login, $senha);
+        foreach ($estudante[0] as $key => $value) {
           if ($key == "idusuario") {
             $_SESSION["estudante"]["idusuario"] = $value;
             continue;
@@ -149,7 +157,10 @@
       $estudante = new Usuario();
       $estudante->deleteEstudanteById($idestudante);
       $estudante->deleteUsuarioById($idusuario);
-      header("Location: painel_estudantes.php");
+      if (isset($_SESSION["administrador"])) {
+        header("Location: actions.php?action=selecionar_usuario&tipo=estudantes");
+      }
+      
       break;
     case 'apagar_usuario':
       $idusuario = $_GET["idusuario"];
@@ -260,9 +271,17 @@
       }
       break;
     case 'deslogar':
-      unset($_SESSION["estudante"]);
-      session_destroy();
-      header("Location: plogin.php");
+      if (isset($_SESSION["administrador"]) || isset($_SESSION["lista_usuarios"])) {
+        unset($_SESSION["administrador"]);
+        unset($_SESSION["lista_usuarios"]);
+        session_destroy();
+        header("Location: plogin.php");
+      }
+      if (isset($_SESSION["estudante"])) {
+        unset($_SESSION["estudante"]);
+        session_destroy();
+        header("Location: plogin.php");
+      }
       break;
     case 'alterar_senha':
       $novasenha = $_POST["senha"];
@@ -282,8 +301,24 @@
       break;
     case 'selecionar_usuario':
       $tipo = $_GET["tipo"];
-      if (condition) {
-        # code...
+      if ($tipo == "administradores") {
+        $listar_usuarios = new Usuario();
+        $lista_usuarios = $listar_usuarios->selectUsuariosByTipo("Administrador");
+        $_SESSION["lista_usuarios"] = $lista_usuarios;
+        $_SESSION["tipo"] = "Administrador";
+        header("Location: painel_administrador.php");
+      } else if ($tipo == "organizadores") {
+        $listar_usuarios = new Usuario();
+        $lista_usuarios = $listar_usuarios->selectUsuariosByTipo("Organizador");
+        $_SESSION["lista_usuarios"] = $lista_usuarios;
+        $_SESSION["tipo"] = "Organizador";
+        header("Location: painel_administrador.php");
+      } else {
+        $listar_usuarios = new Usuario();
+        $lista_usuarios = $listar_usuarios->selectAllEstudantes();
+        $_SESSION["lista_usuarios"] = $lista_usuarios;
+        $_SESSION["tipo"] = "Estudante";
+        header("Location: painel_administrador.php");
       }
       break;
     default:

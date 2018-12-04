@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg">
-<?php require_once("navbar.php"); ?>
+    <?php require_once("navbar.php"); ?>
     <div class="banner">
         <img src="midia/predio-frente.jpg" class="banner-image">
         <div class="centro">
@@ -154,7 +154,10 @@
                 </div>
                 <div class="center aligned six wide column">
                     <br><br><br><br><br><br><br><br><br><br><br>
-                    <h1 class="ui icon header"><i class="hand point left outline icon"></i>Conheça nossos cursos</h1>
+                    <h1 class="ui icon header">
+                    <i class="hand point left outline icon"></i>
+                    Conheça nossos cursos
+                    </h1>
                     <p>Na GRILY temos apenas os melhores cursos artísticos de toda América Latina. Clique sobre uma das
                         iamgens e confira detalhes!</p>
                 </div>
@@ -222,7 +225,7 @@
     </footer>
 
     <!-- as janela modal -->
-    <div id="myModal" class="ui basic modal">
+    <div id="myModal" class="ui basic modal 1">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-science-lab-1.jpg">
@@ -231,7 +234,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal2">
+    <div id="myModal" class="ui basic modal 2">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://www.concordmonitor.com/getattachment/110da633-c73f-4734-885e-2dce58cf7c2a/RMSspill-cm-092016-ph01">
@@ -240,7 +243,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal3">
+    <div id="myModal" class="ui basic modal 3">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="http://assets.ecenglish.com/blogs/uploads/sites/34/2014/10/see-inside-our-school.jpg">
@@ -249,7 +252,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal4">
+    <div id="myModal" class="ui basic modal 4">
         <div class="image content">
             <div class="ui centered masive image top-margin">
                 <img src="https://www.eveningexpress.co.uk/wp-content/uploads/sites/10/2018/07/5b52fb8a69241-559x372.jpg">
@@ -258,7 +261,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal5">
+    <div id="myModal" class="ui basic modal 5">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://jaddisonschool.com/wp-content/uploads/J-Addison-Private-School-Markham-Ontario-Canada-Cafe-J-Food-Services-1.jpg">
@@ -267,7 +270,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal6">
+    <div id="myModal" class="ui basic modal 6">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="http://assets.inarkansas.com/64900/north-little-rock-high-school-renovations-763.jpg">
@@ -276,7 +279,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal7">
+    <div id="myModal" class="ui basic modal 7">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://news-img-9a9cfd28311db221b19757424a2f3b66.s3.amazonaws.com/articles/MillCreekERW11457393003.jpg">
@@ -285,7 +288,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal8">
+    <div id="myModal" class="ui basic modal 8">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://merchantview360.com/wp-content/uploads/2014/05/IMG_18801.jpg">
@@ -294,7 +297,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="ui basic modal9">
+    <div id="myModal" class="ui basic modal 9">
         <div class="image content">
             <div class="ui centered huge image top-margin">
                 <img src="https://cdn.vox-cdn.com/thumbor/l3okHkkHR0iaqGtnbECgeToVAog=/0x0:800x533/920x613/filters:focal(336x202:464x330):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/61311607/JonesColl9.0.0.1485190576.0.jpg">
@@ -324,39 +327,39 @@
         });
 
         $(".myImg").click(function () {
-            $('.ui.basic.modal').modal('show');
+            $('.ui.basic.modal.1').modal('show');
         });
 
         $(".myImg2").click(function () {
-            $('.ui.basic.modal2').modal('show');
+            $('.ui.basic.modal.2').modal('show');
         });
 
         $(".myImg3").click(function () {
-            $('.ui.basic.modal3').modal('show');
+            $('.ui.basic.modal.3').modal('show');
         });
 
         $(".myImg4").click(function () {
-            $('.ui.basic.modal4').modal('show');
+            $('.ui.basic.modal.4').modal('show');
         });
 
         $(".myImg5").click(function () {
-            $('.ui.basic.modal5').modal('show');
+            $('.ui.basic.modal.5').modal('show');
         });
 
         $(".myImg6").click(function () {
-            $('.ui.basic.modal6').modal('show');
+            $('.ui.basic.modal.6').modal('show');
         });
 
         $(".myImg7").click(function () {
-            $('.ui.basic.modal7').modal('show');
+            $('.ui.basic.modal.7').modal('show');
         });
 
         $(".myImg8").click(function () {
-            $('.ui.basic.modal8').modal('show');
+            $('.ui.basic.modal.8').modal('show');
         });
 
         $(".myImg9").click(function () {
-            $('.ui.basic.modal9').modal('show');
+            $('.ui.basic.modal.9').modal('show');
         });
     </script>
 </body>

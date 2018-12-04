@@ -43,7 +43,7 @@
       echo "<script>var jsonDados = new Array(); jsonDados = $dadosTratados</script>";
     }
   ?>
-  <body>
+  <body class="bg">
     <div class="ui grid container stackable">
       <div class="sixteen wide column">
         <div class="ui center aligned segment">

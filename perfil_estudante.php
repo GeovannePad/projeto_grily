@@ -127,7 +127,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
 </div>
 </div>
   <!---janelas modais--->
-  <div class="modal-top ui coupled modal image">
+  <div class="ui modal coupled modal imageModal">
     <div class="header">Upload de imagem</div>
     <i class="close icon"></i>
 
@@ -202,7 +202,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       $(".form-button").hide();
       <?php
       if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
-        echo "'var imagem_usuario = midia/usericon.png';";
+        echo "'var imagem_usuario = midia/user-icon.png';";
       } else {
         $imagem = $_SESSION["estudante"]["imagem"];
         echo "var imagem_usuario = 'midia/imagens_estudantes/$imagem';";
@@ -211,7 +211,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       ?>
       var imagem = $("#imagemModal");
       $("<img />", {
-        "src": imagem_usuario,
+        "src": imagem,
         "class": "thumb-image",
         "style": "height:200px;width:300px;",
       }).appendTo(imagem);
@@ -220,7 +220,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         allowMultiple: true
       });
       $(".alterbutton").click(function(){
-      $('.modal.image').modal("show");
+      $('.imageModal').modal("show");
     });
     $("input:file").change(function(){
       if (typeof (FileReader) != "undefined") {
@@ -259,6 +259,8 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
       echo 'var erro_senha="vazio"';
     } else if (isset($_GET["err_senha"]) && $_GET["err_senha"] == "pequena"){
       echo 'var erro_senha="pequena"';
+    } else {
+      echo 'var erro_senha = "nada";';
     }
     if (isset($_GET["err_imagem"])) {
       switch ($_GET["err_imagem"]) {
@@ -273,7 +275,7 @@ if ($_SESSION["estudante"]["imagem"] == "user-icon.png") {
         break;
     default:
         echo 'var erro = "nada";';
-        echo 'var erro_senha = "nada"';
+        echo 'var erro_senha = "nada";';
       break;
   }
 }

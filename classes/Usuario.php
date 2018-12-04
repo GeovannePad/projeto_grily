@@ -85,12 +85,24 @@ class Usuario extends Estudante
     ));
   }
 
+  public function selectUsuarioEstudanteById($id){
+    return $this->stmt->select("SELECT usuarios.nome, login, dtregistro, estudantes.imagem FROM usuarios INNER JOIN estudantes ON usuarios.idusuario=estudantes.idusuario WHERE usuarios.idusuario = :IDUSUARIO;", array(
+      ":IDUSUARIO"=>$id
+    ));
+  }
+
   public function selectUsuarioEstudante($login, $senha){
     $this->setLogin($login);
     $this->setSenha($senha);
     return $this->stmt->select("SELECT tipo, rm, login, estudantes.nome, dtnascimento, endereco, idcurso, fone, biografia, idestudante, imagem, usuarios.idusuario FROM estudantes INNER JOIN usuarios ON estudantes.idusuario=usuarios.idusuario WHERE usuarios.login = :LOGIN AND usuarios.senha = :SENHA", array(
       ":LOGIN"=>$this->getLogin(),
       ":SENHA"=>$this->getSenha()
+    ));
+  }
+
+  public function selectOnlyUsuarioById($id){
+    return $this->stmt->select("SELECT tipo FROM usuarios WHERE idusuario = :IDUSUARIO", array(
+      ":IDUSUARIO"=>$id
     ));
   }
 

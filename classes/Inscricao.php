@@ -12,7 +12,7 @@
     protected $idcurso;
 
     public function __construct(){
-      $this->stmt = new Sql_connect("dbgrily", "localhost", "root", "");      
+      $this->stmt = new Sql_connect("dbgrilyofficial", "localhost", "root", "");      
     }
 
 

@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `dbgrily` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `dbgrily`;
+CREATE DATABASE  IF NOT EXISTS `dbgrilyofficial` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `dbgrilyofficial`;
 -- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: dbgrily

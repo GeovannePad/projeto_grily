@@ -27,7 +27,7 @@ class Estudante extends Inscricao
   }
 
   public function addEstudante(){
-    $this->stmt->insert("INSERT INTO estudantes (idcurso, rm, idusuario, fone, dtnascimento, endereco, nome, biografia, imagem) VALUES (:IDCURSO, :RM, :IDUSUARIO, :FONE, :DTNASCIMENTO, :ENDERECO, :NOME, :BIOGRAFIA, :IMAGEM)", array(
+    $this->stmt->insert("INSERT INTO estudantes (idcurso, rm, idusuario, fone, dtnascimento, endereco, nome, biografia, imagem) VALUES (:IDCURSO, :RM, :IDUSUARIO, :FONE, :DTNASCIMENTO, :ENDERECO, :NOME, :BIOGRAFIA, :IMAGEM);", array(
       ":IDCURSO"=>$this->getIdcurso(),
       ":RM"=>$this->getRm(),
       ":IDUSUARIO"=>$this->getIdusuario(),

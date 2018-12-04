@@ -22,13 +22,18 @@
       $logar = new Usuario();
       $usuario = $logar->selectOneUsuario($login, $senha);
       if ($usuario[0]["tipo"] == "Organizador") {
+        $listar = new Usuario();
         $organizador = $logar->selectOneUsuario($login, $senha);
+        $lista_usuarios = $listar->selectAllInscricoes();
+
+        $_SESSION["lista_usuarios"] = $lista_usuarios;
         $_SESSION["organizador"] = $organizador[0];
         header("Location: painel_organizador.php");
       } else if ($usuario[0]["tipo"] == "Administrador"){
         $listar = new Usuario();
         $lista_usuarios = $listar->selectUsuariosByTipo("Administrador");
         $administrador = $logar->selectOneUsuario($login, $senha);
+
         $_SESSION["lista_usuarios"] = $lista_usuarios;
         $_SESSION["administrador"] = $administrador[0];
         header("Location: painel_administrador.php");
@@ -86,7 +91,11 @@
         } else {
           $registrar->setAllUsuarioData($nome, $login, $senha, $tipo);
           $registrar->addUsuario();
-          echo "Registro realizado com sucesso";
+          if ($tipo == "Administrador") {
+            header("Location: actions.php?action=selecionar_usuario&tipo=administradores");
+          } else {
+            header("Location: actions.php?action=selecionar_usuario&tipo=organizadores");
+          }
           break;
         }
       } else {
@@ -95,12 +104,11 @@
         echo "Registro realizado com sucesso";
       }
       
-      header("Location:");
+      header("Location: painel_administrador.php");
       break;
     case 'registrar_estudante':
-      $id = $_GET["idinscricao"];
       $registrar_estudante = new Usuario();
-      $inscricao = $registrar_estudante->selectInscricaoById($id);
+      
       $resultados_logins = $registrar_estudante->selectAllLogins();
       $resultados_rms = $registrar_estudante->selectAllRms();
       
@@ -115,41 +123,70 @@
         }
       }
 
-      foreach ($inscricao[0] as $key => $value) {
+      foreach ($_SESSION["dados_inscricao"] as $key => $value) {
         $estudante[$key] = $value;
       }
 
-      $nome = $estudante["nome"];
-      $login = gerarLoginEstudante($nome);
+     
+      $login = $_SESSION["dados_inscricao"]["login"];
+ 
+      if (in_array($login, $logins)) {
+        $check = in_array($login, $logins);
+        while ($check === true) {
+          $login = gerarLoginEstudante($_SESSION["dados_inscricao"]["nome"]);
+          $check = in_array($login, $logins);
+          if (!$check) {
+            $_SESSION["dados_inscricao"]["login"] = $login;
+            break;
+          }
+        }
+      }
       $senha = mt_rand(11111, 99999);
       $tipo = "Estudante";
-      
+      $nome = $estudante["nome"];
+      $login = $_SESSION['dados_inscricao']['login'];
+
       $registrar_estudante->setAllUsuarioData($nome, $login, $senha, $tipo);
       $ultimo_usuario = $registrar_estudante->insertAndReturnUsuario();
 
       foreach ($ultimo_usuario[0] as $key => $value) {
         $usuario[$key] = $value;
       }
-      $idcurso = $estudante["idcurso"];
+
+      if ($estudante["idcurso"] == "Teatro") {
+        $_SESSION["dados_inscricao"]["idcurso"] = 1;
+      } else if ($estudante["idcurso"] == "Artes") {
+        $_SESSION["dados_inscricao"]["idcurso"] = 4;
+      } else if ($estudante["idcurso"] == "Música") {
+        $_SESSION["dados_inscricao"]["idcurso"] = 3;
+      } else {
+        $_SESSION["dados_inscricao"]["idcurso"] = 2;
+      }
+      $idcurso = $_SESSION["dados_inscricao"]["idcurso"];
       $idusuario = $usuario["idusuario"];
       $fone = $estudante["fone"];
-      $dtnascimento = $estudante["dtnascimento"];
+      $data = $estudante["dtnascimento"];
+      $dateString = $_SESSION["dados_inscricao"]["dtnascimento"];
+      $myDateTime = DateTime::createFromFormat('d/m/Y', $dateString);
+      $dtnascimento = $myDateTime->format('Y-m-d');
       $endereco = $estudante["endereco"];
       $biografia = $estudante["biografia"];
-      $rm = mt_rand(11111, 99999);
+      $rm = $_SESSION["dados_inscricao"]["rm"];
       $rm = checkRm($rm, $rms);
+      $imagem = "user-icon.png";
 
       $registrar_estudante->setAllInscricaoData($fone, $dtnascimento, $endereco, $nome, $biografia, $idcurso);
-      $registrar_estudante->setAllEstudanteData($rm, $idusuario);
+      $registrar_estudante->setAllEstudanteData($rm, $idusuario, $imagem);
       $registrar_estudante->addEstudante();     
-      $registrar_estudante->deleteInscricaoById($inscricao[0]["idinscricao"]);
-      header("Location: painel_estudantes.php");
+      $registrar_estudante->deleteInscricaoById($_SESSION["dados_inscricao"]["idinscricao"]);
+      unset($_SESSION["dados_inscricao"]);
+      header("Location: actions.php?action=selecionar_usuario&tipo=estudantes");
       break;
     case 'apagar_inscricao':
       $id = $_GET["idinscricao"];
       $inscricao = new Inscricao();
       $inscricao->deleteInscricaoById($id);
-      header("Location: painel_organizador.php");
+      header("Location: actions.php?action=selecionar_usuario&tipo=inscrições");
       break;
     case 'apagar_estudante':
       $idusuario = $_GET["idusuario"];
@@ -165,8 +202,13 @@
     case 'apagar_usuario':
       $idusuario = $_GET["idusuario"];
       $usuario = new Usuario();
-      $usuario->deleteUsuarioById($idusuario);
-      header("Location: painel_administrador.php");
+      $dados = $usuario->selectOnlyUsuarioById($idusuario);
+      $usuario->deleteUsuarioById($idusuario); 
+      if ($dados[0]["tipo"] == "Organizador") {
+        header("Location: actions.php?action=selecionar_usuario&tipo=organizadores");
+      } else if ($dados[0]["tipo"] == "Administrador"){ 
+        header("Location: actions.php?action=selecionar_usuario&tipo=administradores");
+      }
       break;
     case 'alterar_imagem':
       $imagem_nova = $_FILES["imagem"];
@@ -271,7 +313,8 @@
       }
       break;
     case 'deslogar':
-      if (isset($_SESSION["administrador"]) || isset($_SESSION["lista_usuarios"])) {
+      if (isset($_SESSION["administrador"]) || isset($_SESSION["lista_usuarios"]) || isset($_SESSION["organizador"])) {
+        unset($_SESSION["organizador"]);
         unset($_SESSION["administrador"]);
         unset($_SESSION["lista_usuarios"]);
         session_destroy();
@@ -301,6 +344,7 @@
       break;
     case 'selecionar_usuario':
       $tipo = $_GET["tipo"];
+
       if ($tipo == "administradores") {
         $listar_usuarios = new Usuario();
         $lista_usuarios = $listar_usuarios->selectUsuariosByTipo("Administrador");
@@ -313,12 +357,24 @@
         $_SESSION["lista_usuarios"] = $lista_usuarios;
         $_SESSION["tipo"] = "Organizador";
         header("Location: painel_administrador.php");
+      } else if ($tipo == "inscrições"){
+        $listar_inscricoes = new Inscricao();
+        $inscricoes = $listar_inscricoes->selectAllInscricoes();
+        $_SESSION["lista_usuarios"] = $inscricoes;
+        $_SESSION["tipo"] = "Inscrição";
+        header("Location: painel_organizador.php");
       } else {
+
         $listar_usuarios = new Usuario();
         $lista_usuarios = $listar_usuarios->selectAllEstudantes();
         $_SESSION["lista_usuarios"] = $lista_usuarios;
         $_SESSION["tipo"] = "Estudante";
-        header("Location: painel_administrador.php");
+        if (isset($_SESSION["administrador"])) {
+          header("Location: painel_administrador.php");
+        } else {
+          header("Location: painel_organizador.php");
+        }
+        
       }
       break;
     default:

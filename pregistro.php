@@ -13,9 +13,6 @@
     <link rel="stylesheet" type="text/css" href="css-js/Semantic-UI-CSS-master/semantic.css">
     <link rel="stylesheet" type="text/css" href="css-js/css-aditional.css">
 
-    <script src="assets/library/jquery.min.js"></script>
-    <script src="../dist/components/form.js"></script>
-    <script src="../dist/components/transition.js"></script>
   </head>
   <body>
   <div class="container">
@@ -27,7 +24,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="setLogin" class="col-sm-1-12 col-form-label">Login</label>&nbsp;
+            <label for="inputLogin" class="col-sm-1-12 col-form-label">Login</label>&nbsp;
             <div class="col-sm-1-12">
               <input type="text" class="form-control" name="login" id="inputLogin">
             </div>
@@ -52,7 +49,7 @@
       
           <div class="form-group row">
             <div class=" col-sm-10">
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <input type="submit" class="btn btn-primary" form="form" value="Registrar">
             </div>
           </div>
         </form>
@@ -67,10 +64,6 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script>
-        jQuery.validator.setDefaults({
-            debug: true,
-            success: "valid"
-        });
         $( "#form" ).validate({
             rules: {
                 nome: {
